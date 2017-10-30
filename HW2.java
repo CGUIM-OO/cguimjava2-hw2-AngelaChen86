@@ -3,31 +3,38 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * @author TODO: please add student ID and name here
+ * @author TODO:B0544151³¯²úÓz
  * Try to write some comments for your codes (methods, 15 points)
  */
 public class HW2 {
-
+/*public¤½¶};void¤£¦^¶Ç;main¥ý°õ¦æªº¤èªk*/
 	public static void main(String[] args) {
+/*sc¿é¤Jªk*/
 		Scanner sc = new Scanner(System.in);
+/*print½Ð¿é¤J´X°ÆµP*/
 		System.out.println("input N (deck of cards):");
+/*scanner¿é¤Jtestn*/
 		String testn= sc.nextLine(); 
-        
+/*scanner¿é¤JnDeck°ÆµP*/        
 		int nDeck=Integer.parseInt(testn);
+/*©I¥smethod Deckºâ¥X¿é¤JªºµP¼Æ*/
 		Deck deck=new Deck(nDeck);
 		//TODO: please check your output, make sure that you print all cards on your screen (10 points)
+/*©I¥smethod deck¡A§â¿é¤J¦h¤Ö°ÆªºµP¼Æ³£¦L¥X¨Ó*/		
 		deck.printDeck();
-		
+/*¦pªGisAllCardsCorrect²Å¦X*/		
 		if(isAllCardsCorrect(deck.getAllCards(),nDeck)){
+/*²Å¦X´Nprint Well done!*/		
 			System.out.println("Well done!");
 		}else{
+/*¤£²Å¦X´Nprint Error, please check your sours code*/
 			System.out.println("Error, please check your sourse code");
 		}
 	}
 	/**
 	 * This method is used for checking your result, not a part of your HW2
-	 * @param allCards æ‰€æœ‰çš„ç‰Œ
-	 * @param nDeck ç¸½å…±æœ‰å¹¾å‰¯ç‰Œ
+	 * @param allCards ©Ò¦³ªºµP
+	 * @param nDeck Á`¦@¦³´X°ÆµP
 	 * @return
 	 */
 	private static boolean isAllCardsCorrect(ArrayList<Card> allCards,int nDeck){
@@ -61,12 +68,12 @@ public class HW2 {
 		}
 		return isCorrect;
 	}
-
 }
 /**
  * Description: TODO: please add description here
  */
 class Deck{
+/*private¤£¤½¶};Arraylist<Card>*/
 	private ArrayList<Card> cards;
 	//TODO: Please implement the constructor (30 points)
 	public Deck(int nDeck){
@@ -77,6 +84,26 @@ class Deck{
 		//Card card=new Card(1,1); ->means new card as clubs ace
 		//cards.add(card);
 		//Sample code end
+/*³]°}¦Carrayrank[]¦s©ñA-K¤Q¤T±iµP*/
+		String arrayrank[] = {"Ace","2","3","4","5","6","7","8","9","10","J","Q","K"};
+/*³]°}¦Carraysuit[]¦s©ñ¥|ºØªá¦â*/
+		char arraysuit[] = {'1','2','3','4'};
+/*®Ú¾Ú¿é¤JªºnDeck°Æ¼ÆªºµPprint¥X©Ò¦³ªºµP*/
+		for(int i = 1;i <= nDeck;i++)
+		{
+			for(int j = 0;j <= 12;j++)
+			{
+				for(int k = 0;k <= 3;k++)
+				{
+					System.out.println("(" + arrayrank[j] + "," + arraysuit[k] + ")");
+					return;
+					int suit;
+					int rank;
+					Card card=new Card( rank,suit);
+					cards.add(card);
+				}
+			}
+		}
 
 	}	
 	//TODO: Please implement the method to print all cards on screen (10 points)
@@ -105,8 +132,13 @@ class Card{
 	}	
 	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
 	public void printCard(){
-		//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
-
+	//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
+/*³]°}¦Carrayrank[]¦s©ñA-K¤Q¤T±iµP*/
+		String arrayrank[] = {"Ace","2","3","4","5","6","7","8","9","10","J","Q","K"};
+/*³]°}¦Carraysuit[]¦s©ñ¥|ºØªá¦â*/
+		char arraysuit[] = {'1','2','3','4'};
+/*®Ú¾Ú¿é¤JªºnDeck°Æ¼ÆªºµPprint¥X©Ò¦³ªºµP(µP¼Æ,ªá¦â)*/
+		System.out.println("(" + arrayrank[rank-1] + "," + arraysuit[suit-1] + ")");
 	}
 	public int getSuit(){
 		return suit;
