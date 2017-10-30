@@ -117,6 +117,7 @@ class Deck{
  * Description: TODO: please add description here
  */
 class Card{
+	/*只能有一個public,設定private*/
 	private int suit; //Definition: 1~4, Clubs=1, Diamonds=2, Hearts=3, Spades=4
 	private int rank;
 	//1~13
@@ -124,8 +125,9 @@ class Card{
 	 * @param s suit
 	 * @param r rank
 	 */
+	/*只能有一個public,設定private*/
 	private String arrayrank[] = {"Ace","2","3","4","5","6","7","8","9","10","J","Q","K"};
-	private String arraysuit[] = {"1","2","3","4"};
+	private char arraysuit[] = {'1','2','3','4'};
 	public Card(int s,int r){
 		suit=s;
 		rank=r;
@@ -133,7 +135,6 @@ class Card{
 	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
 	public void printCard(){
 	//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
-	
 	/*印出所有的牌(牌數,花色)*/
 	System.out.println("(" + arrayrank[rank] + "," + arraysuit[suit] + ")");
 	}
