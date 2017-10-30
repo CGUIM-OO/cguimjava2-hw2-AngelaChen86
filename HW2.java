@@ -7,27 +7,27 @@ import java.util.Scanner;
  * Try to write some comments for your codes (methods, 15 points)
  */
 public class HW2 {
-/*public公開;void不回傳;main先執行的方法*/
+	/*public公開;void不回傳;main先執行的方法*/
 	public static void main(String[] args) {
-/*sc輸入法*/
+		/*sc輸入法*/
 		Scanner sc = new Scanner(System.in);
-/*print請輸入幾副牌*/
+		/*print請輸入幾副牌*/
 		System.out.println("input N (deck of cards):");
-/*scanner輸入testn*/
+		/*scanner輸入testn*/
 		String testn= sc.nextLine(); 
-/*scanner輸入nDeck副牌*/        
+		/*將testn轉換成int nDeck副牌*/        
 		int nDeck=Integer.parseInt(testn);
-/*呼叫method Deck算出輸入的牌數*/
+		/*呼叫method Deck算出輸入的牌數*/
 		Deck deck=new Deck(nDeck);
 		//TODO: please check your output, make sure that you print all cards on your screen (10 points)
-/*呼叫method deck，把輸入多少副的牌數都印出來*/		
+		/*呼叫method printDeck，把輸入多少副的牌數都印出來*/		
 		deck.printDeck();
-/*如果isAllCardsCorrect符合*/		
+		/*如果isAllCardsCorrect符合*/		
 		if(isAllCardsCorrect(deck.getAllCards(),nDeck)){
-/*符合就print Well done!*/		
+			/*符合就print Well done!*/		
 			System.out.println("Well done!");
 		}else{
-/*不符合就print Error, please check your sours code*/
+			/*不符合就print Error, please check your sours code*/
 			System.out.println("Error, please check your sourse code");
 		}
 	}
@@ -84,19 +84,16 @@ class Deck{
 		//Card card=new Card(1,1); ->means new card as clubs ace
 		//cards.add(card);
 		//Sample code end
-		/*設陣列arrayrank[]存放A-K十三張牌*/
-		String arrayrank[] = {"Ace","2","3","4","5","6","7","8","9","10","J","Q","K"};
-		/*設陣列arraysuit[]存放四種花色*/
-		char arraysuit[] = {'1','2','3','4'};
+		int rank;
+		int suit;
 		/*根據輸入的nDeck副數的牌跑出所有的花色跟牌數*/
 		for(int i = 1;i <= nDeck;i++)
 		{
-			for(int rank = 0;rank <= 12;rank++)
+			for(suit = 0;suit <= 3;suit++)
 			{
-				for(int suit = 0;suit <= 3;suit++)
+				for(rank = 0;rank <= 12;rank++)
 				{
-					System.out.println("(" + arrayrank[rank-1] + "," + arraysuit[suit-1] + ")");
-					Card card=new Card(rank,suit);
+					Card card=new Card(suit,rank);
 					cards.add(card);
 				}
 			}
@@ -121,20 +118,24 @@ class Deck{
  */
 class Card{
 	private int suit; //Definition: 1~4, Clubs=1, Diamonds=2, Hearts=3, Spades=4
-	private int rank; //1~13
+	private int rank;
+	//1~13
 	/**
 	 * @param s suit
 	 * @param r rank
 	 */
+	private String arrayrank[] = {"Ace","2","3","4","5","6","7","8","9","10","J","Q","K"};
+	private String arraysuit[] = {"1","2","3","4"};
 	public Card(int s,int r){
-		
 		suit=s;
 		rank=r;
-	}	
+	}
 	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
 	public void printCard(){
 	//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
-
+	
+	/*印出所有的牌(牌數,花色)*/
+	System.out.println("(" + arrayrank[rank] + "," + arraysuit[suit] + ")");
 	}
 	public int getSuit(){
 		return suit;
