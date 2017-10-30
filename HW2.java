@@ -3,38 +3,38 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * @author TODO:B0544151³¯²úÓz
+ * @author TODO:B0544151é™³è‰èŒ¿
  * Try to write some comments for your codes (methods, 15 points)
  */
 public class HW2 {
-/*public¤½¶};void¤£¦^¶Ç;main¥ı°õ¦æªº¤èªk*/
+/*publicå…¬é–‹;voidä¸å›å‚³;mainå…ˆåŸ·è¡Œçš„æ–¹æ³•*/
 	public static void main(String[] args) {
-/*sc¿é¤Jªk*/
+/*scè¼¸å…¥æ³•*/
 		Scanner sc = new Scanner(System.in);
-/*print½Ğ¿é¤J´X°ÆµP*/
+/*printè«‹è¼¸å…¥å¹¾å‰¯ç‰Œ*/
 		System.out.println("input N (deck of cards):");
-/*scanner¿é¤Jtestn*/
+/*scannerè¼¸å…¥testn*/
 		String testn= sc.nextLine(); 
-/*scanner¿é¤JnDeck°ÆµP*/        
+/*scannerè¼¸å…¥nDeckå‰¯ç‰Œ*/        
 		int nDeck=Integer.parseInt(testn);
-/*©I¥smethod Deckºâ¥X¿é¤JªºµP¼Æ*/
+/*å‘¼å«method Deckç®—å‡ºè¼¸å…¥çš„ç‰Œæ•¸*/
 		Deck deck=new Deck(nDeck);
 		//TODO: please check your output, make sure that you print all cards on your screen (10 points)
-/*©I¥smethod deck¡A§â¿é¤J¦h¤Ö°ÆªºµP¼Æ³£¦L¥X¨Ó*/		
+/*å‘¼å«method deckï¼ŒæŠŠè¼¸å…¥å¤šå°‘å‰¯çš„ç‰Œæ•¸éƒ½å°å‡ºä¾†*/		
 		deck.printDeck();
-/*¦pªGisAllCardsCorrect²Å¦X*/		
+/*å¦‚æœisAllCardsCorrectç¬¦åˆ*/		
 		if(isAllCardsCorrect(deck.getAllCards(),nDeck)){
-/*²Å¦X´Nprint Well done!*/		
+/*ç¬¦åˆå°±print Well done!*/		
 			System.out.println("Well done!");
 		}else{
-/*¤£²Å¦X´Nprint Error, please check your sours code*/
+/*ä¸ç¬¦åˆå°±print Error, please check your sours code*/
 			System.out.println("Error, please check your sourse code");
 		}
 	}
 	/**
 	 * This method is used for checking your result, not a part of your HW2
-	 * @param allCards ©Ò¦³ªºµP
-	 * @param nDeck Á`¦@¦³´X°ÆµP
+	 * @param allCards æ‰€æœ‰çš„ç‰Œ
+	 * @param nDeck ç¸½å…±æœ‰å¹¾å‰¯ç‰Œ
 	 * @return
 	 */
 	private static boolean isAllCardsCorrect(ArrayList<Card> allCards,int nDeck){
@@ -73,7 +73,7 @@ public class HW2 {
  * Description: TODO: please add description here
  */
 class Deck{
-/*private¤£¤½¶};Arraylist<Card>*/
+/*privateä¸å…¬é–‹*/
 	private ArrayList<Card> cards;
 	//TODO: Please implement the constructor (30 points)
 	public Deck(int nDeck){
@@ -84,22 +84,19 @@ class Deck{
 		//Card card=new Card(1,1); ->means new card as clubs ace
 		//cards.add(card);
 		//Sample code end
-/*³]°}¦Carrayrank[]¦s©ñA-K¤Q¤T±iµP*/
+		/*è¨­é™£åˆ—arrayrank[]å­˜æ”¾A-Kåä¸‰å¼µç‰Œ*/
 		String arrayrank[] = {"Ace","2","3","4","5","6","7","8","9","10","J","Q","K"};
-/*³]°}¦Carraysuit[]¦s©ñ¥|ºØªá¦â*/
+		/*è¨­é™£åˆ—arraysuit[]å­˜æ”¾å››ç¨®èŠ±è‰²*/
 		char arraysuit[] = {'1','2','3','4'};
-/*®Ú¾Ú¿é¤JªºnDeck°Æ¼ÆªºµPprint¥X©Ò¦³ªºµP*/
+		/*æ ¹æ“šè¼¸å…¥çš„nDeckå‰¯æ•¸çš„ç‰Œè·‘å‡ºæ‰€æœ‰çš„èŠ±è‰²è·Ÿç‰Œæ•¸*/
 		for(int i = 1;i <= nDeck;i++)
 		{
-			for(int j = 0;j <= 12;j++)
+			for(int rank = 0;rank <= 12;rank++)
 			{
-				for(int k = 0;k <= 3;k++)
+				for(int suit = 0;suit <= 3;suit++)
 				{
-					System.out.println("(" + arrayrank[j] + "," + arraysuit[k] + ")");
-					return;
-					int suit;
-					int rank;
-					Card card=new Card( rank,suit);
+					System.out.println("(" + arrayrank[rank-1] + "," + arraysuit[suit-1] + ")");
+					Card card=new Card(rank,suit);
 					cards.add(card);
 				}
 			}
@@ -110,7 +107,10 @@ class Deck{
 	public void printDeck(){
 		//Hint: print all items in ArrayList<Card> cards, 
 		//TODO: please implement and reuse printCard method in Card class (5 points)
-
+		for(Card a:cards)
+		{
+			a.printCard();
+		}
 	}
 	public ArrayList<Card> getAllCards(){
 		return cards;
@@ -127,18 +127,14 @@ class Card{
 	 * @param r rank
 	 */
 	public Card(int s,int r){
+		
 		suit=s;
 		rank=r;
 	}	
 	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
 	public void printCard(){
 	//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
-/*³]°}¦Carrayrank[]¦s©ñA-K¤Q¤T±iµP*/
-		String arrayrank[] = {"Ace","2","3","4","5","6","7","8","9","10","J","Q","K"};
-/*³]°}¦Carraysuit[]¦s©ñ¥|ºØªá¦â*/
-		char arraysuit[] = {'1','2','3','4'};
-/*®Ú¾Ú¿é¤JªºnDeck°Æ¼ÆªºµPprint¥X©Ò¦³ªºµP(µP¼Æ,ªá¦â)*/
-		System.out.println("(" + arrayrank[rank-1] + "," + arraysuit[suit-1] + ")");
+
 	}
 	public int getSuit(){
 		return suit;
